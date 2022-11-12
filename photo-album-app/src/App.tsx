@@ -1,23 +1,26 @@
-import React from 'react';
+import { FC } from 'react';
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 
-function App() {
+import { Home } from './Components/Routes/Home/home';
+import { Users } from './Components/Routes/Users/users';
+import { Posts } from './Components/Routes/Posts/posts';
+
+export const App : FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <div>
+          <>{console.log('test')}</>;
+          <Link to="Posts">Posts</Link>
+          <Link to="Users">Users</Link>
+          <Link to="/">Home</Link>
+        </div>
+        <Routes>
+          <Route path='Routes' element={<Users/>}/>
+          <Route path='Posts' element={<Posts/>}/>
+          <Route index element = {<Home/>}/>
+        </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
